@@ -1,0 +1,28 @@
+{
+  "name": "proset",
+  "version": "0.0.1",
+  "description": "proset game",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evantey14/proset.git"
+  },
+  "keywords": [
+    "proset",
+    "game",
+    "card"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evantey14/proset/issues"
+  },
+  "homepage": "https://github.com/evantey14/proset#readme",
+  "dependencies": {
+    "coffee-script": "^1.10.0",
+    "express": "^4.13.3"
+  }
+}
