@@ -1,12 +1,8 @@
 e = require 'express'
 a = e()
     
-a.configure(() -> 
-    a.use e.bodyParser()
-)
-
 a.get '/', (q, s) -> 
-    s.sendfile 'v/i'
+    s.send 'hello'
 
 a.listen 8080, ->
 
