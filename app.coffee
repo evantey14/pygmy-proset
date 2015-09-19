@@ -1,8 +1,6 @@
 e = require 'express'
 a = e()
-    
-a.get '/', (q, s) -> 
-    s.send 'hello'
-
-a.listen 8080, ->
-
+s = require('http').createServer a
+i = require('socket.io') s
+a.use e.static 'p'
+s.listen 8080, ->
