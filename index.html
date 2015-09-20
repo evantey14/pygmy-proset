@@ -61,7 +61,7 @@ h1 {
   text-align: center;
 }
 </style>
-<h1>Project Name Goes Here</h1>
+<h1>Pygmy ProSet</h1>
 <div id="m">
 <div id="d" style="display:none">
 <button onclick="window.location.reload()">Play again?</button>
@@ -102,6 +102,7 @@ for(var a=0;a<p.length;a++){
 if(p[a]>m){m=p[a];i=a;}}
 $('#d').prepend("<h3>Player "+i+" won!</h3>");
 $('#d').show();
+$('#s').hide();
 });
 function submit(c){
 socket.emit('s',{p:p,m:c});
