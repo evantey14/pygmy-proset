@@ -4,7 +4,7 @@ Hello World!
 function draw(cards){
 console.log(cards);
 }
-varsocket=io();
+var socket=io();
 socket.emit('init');
 socket.on('p',function(o){
 var p=o.p;
