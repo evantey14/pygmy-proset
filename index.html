@@ -1,18 +1,20 @@
 Hello World!
 <script src="/socket.io/socket.io.js"></script>
 <script>
-var socket=io();
+var p=null,c=null,s=null,socket=io();
 socket.emit('init');
 socket.on('p',function(o){
-var p=o.p;
-var c=o.c;
+p=o.p;
+c=o.c;
+s=o.s;
 draw(c);
 });
-socket.on('u',function(c){
-console.log(c);
+socket.on('u',function(o){
+c=o.c;
+s=o.s;
 });
 function submit(c){
-socket.emit('s', c);
+socket.emit('s',{p:p,m:c});
 }
 function draw(c){
 console.log(c);

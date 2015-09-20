@@ -6,7 +6,7 @@ a.use e.static '.'
 s=require('http').createServer a
 i=r('socket.io')(s)
 # game
-g=r('./g')
+g=r './g'
 # c = current game
 c=null
 i.on 'connection',(s)->
@@ -14,10 +14,9 @@ i.on 'connection',(s)->
   if !c?
    c=new g()
    c.n()
-  s.emit('p',{p:c.m(),c:c.c})
-
+  s.emit 'p',{p:c.m(),c:c.c,s:c.p}
  s.on 's',(m)->
-#if c.v(m)
-  c.r(m)
-  i.emit('u',c.c)
+  if c.v m.m
+   c.r m
+   i.emit 'u',{c:c.c,s:c.p}
 s.listen 8
