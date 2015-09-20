@@ -1,69 +1,76 @@
 <style>
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 body {
-  font-family: 'Roboto', sans-serif;
+font-family: 'Roboto', sans-serif;
 }
 #m {
-  width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
+width: 800px;
+margin: 0 auto;
+display: flex;
+flex-direction: row;
 }
 #s {
-  width: 62.5%;
+width: 62.5%;
+}
+#d {
+width: 100%;
+margin: 0 auto;
+}
+#d button {
 }
 #t {
-  width: 37.5%;
-  border-left: 1px solid #d0d0d0;
+width: 37.5%;
+border-left: 1px solid #d0d0d0;
 }
 #p {
-  width: 100%;
-  border-spacing: 25;
-  text-align: center;
+width: 100%;
+border-spacing: 25;
+text-align: center;
 }
 .r {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+display: flex;
+flex-direction: row;
+justify-content: center;
 }
 .c {
-  width: 100;
-  height: 150;
-  background-color: #F0F0F0;
-  border-radius: 5px;
-  margin: 25;
+width: 100;
+height: 150;
+background-color: #F0F0F0;
+border-radius: 5px;
+margin: 25;
 }
 .d {
-  display: none;
+display: none;
 }
 .h {
-  -moz-box-shadow: inset 0 8px 0 0 #F3F3F3, 0 8px 16px 0 #909090;
-  -webkit-box-shadow: inset 0 8px 0 0 #f3f3f3, 0 8px 16px 0 #909090;
+-moz-box-shadow: inset 0 8px 0 0 #F3F3F3, 0 8px 16px 0 #909090;
+-webkit-box-shadow: inset 0 8px 0 0 #f3f3f3, 0 8px 16px 0 #909090;
 }
 .e {
-  color: #75507b;
+color: #75507b;
 }
 </style>
-
 <div id="m">
-  <div id="s">
-    <div class="r">
-      <canvas class="c" id="c0"></canvas>
-      <canvas class="c" id="c1"></canvas>
-    </div>
-    <div class="r">
-      <canvas class="c" id="c2"></canvas>
-      <canvas class="c" id="c3"></canvas>
-      <canvas class="c" id="c4"></canvas>
-    </div>
-    <div class="r">
-      <canvas class="c" id="c5"></canvas>
-      <canvas class="c" id="c6"></canvas>
-    </div>
-  </div>
-  <div id="t"><table id="p"><tr><th>Name</th><th>Score</th></tr></table></div>
+<div id="d" style="display:none">
+You're done. <button onclick="window.location.reload()">Play again?</button>
 </div>
-
+<div id="s">
+<div class="r">
+<canvas class="c" id="c0"></canvas>
+<canvas class="c" id="c1"></canvas>
+</div>
+<div class="r">
+<canvas class="c" id="c2"></canvas>
+<canvas class="c" id="c3"></canvas>
+<canvas class="c" id="c4"></canvas>
+</div>
+<div class="r">
+<canvas class="c" id="c5"></canvas>
+<canvas class="c" id="c6"></canvas>
+</div>
+</div>
+<div id="t"><table id="p"><tr><th>Name</th><th>Score</th></tr></table></div>
+</div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -75,51 +82,53 @@ c=o.c;
 s=o.s;
 redraw();
 });
+socket.on('d',function(){
+console.log("Done!");
+$('#d').show();
+});
 function submit(c){
 socket.emit('s',{p:p,m:c});
 }
-
 var u=['#c00','#f57900','#edd400','#73d216','#3465a4','#75507b'];
 var x=[25,75,25,75,25,75];
 var y=[37,37,75,75,113,113];
 var d;
 $('.c:not(.d)').click(function(e){
-  var n=parseInt(e.target.id.charAt(1));
-  var i=[]
-  $('#c'+n).toggleClass('h');
-  d[n]=!d[n];
-  for(var a=0;a<7;a++) {
-    if(d[a]) {
-      i.push(a);
-    }
-  }
-  submit(i);
+var n=parseInt(e.target.id.charAt(1));
+var i=[]
+$('#c'+n).toggleClass('h');
+d[n]=!d[n];
+for(var a=0;a<7;a++) {
+if(d[a]) {
+i.push(a);
+}
+}
+submit(i);
 });
-
 function redraw(){
-  $('.x').remove();
-  var l=$('#p');
-  for(var n=0;n<s.length;n++){
-    var j=n==p?' e':'';
-    l.append("<tr class='x"+j+"'><td>Player "+n+"</td><td>"+s[n]+"</td></tr>");
-  }
-  for(var n=0;n<7;n++){
-    var w=$('#c'+n).get(0);
-    w.setAttribute('width','100');
-    w.setAttribute('height','150');
-    var v=w.getContext("2d");
-    $(w).addClass('d');
-    for(var b=0,z=c[n];b<7&&z!=null;b++,z>>=1){
-      $(w).removeClass('d');
-      if(z&1){
-        v.beginPath();
-        v.arc(x[b],y[b],10,0,2*Math.PI);
-        v.fillStyle=u[b];
-        v.fill();
-      }
-    }
-  }
-  d=[0,0,0,0,0,0,0];
-  $('.c').removeClass('h');
+$('.x').remove();
+var l=$('#p');
+for(var n=0;n<s.length;n++){
+var j=n==p?' e':'';
+l.append("<tr class='x"+j+"'><td>Player "+n+"</td><td>"+s[n]+"</td></tr>");
+}
+for(var n=0;n<7;n++){
+var w=$('#c'+n).get(0);
+w.setAttribute('width','100');
+w.setAttribute('height','150');
+var v=w.getContext("2d");
+$(w).addClass('d');
+for(var b=0,z=c[n];b<7&&z!=null;b++,z>>=1){
+$(w).removeClass('d');
+if(z&1){
+v.beginPath();
+v.arc(x[b],y[b],10,0,2*Math.PI);
+v.fillStyle=u[b];
+v.fill();
+}
+}
+}
+d=[0,0,0,0,0,0,0];
+$('.c').removeClass('h');
 }
 </script>

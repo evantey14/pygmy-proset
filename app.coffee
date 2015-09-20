@@ -1,16 +1,13 @@
-# require function
 r=require
 e=require 'express'
 a=e()
 a.use e.static '.'
 s=require('http').createServer a
 i=r('socket.io')(s)
-# game
 g=r './g'
-# c = current game
 c=null
 i.on 'connection',(s)->
- s.on 'init',()->
+ s.on 'init',->
   if !c?
    c=new g()
    c.n()
@@ -21,4 +18,7 @@ i.on 'connection',(s)->
   if c.v m.m
    c.r m
    i.emit 'u',{c:c.c,s:c.p}
+   if c.e()
+    c=null
+    i.emit 'd'
 s.listen 8

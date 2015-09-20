@@ -2,6 +2,8 @@ r=require
 _=r 'lodash'
 z=_.drop
 class G
+ e:->
+  _.every(@c, (x)->_.isNull(x)||_.isUndefined(x))
  n:->
   @d=_.range 1,64
   @d=_.shuffle @d
