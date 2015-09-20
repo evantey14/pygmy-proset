@@ -24,6 +24,9 @@
   border-radius: 5px;
   margin: 25;
 }
+.d {
+  background-color: #000;
+}
 .h {
   -moz-box-shadow: inset 0 8px 0 0 #F3F3F3, 0 8px 16px 0 #909090;
   -webkit-box-shadow: inset 0 8px 0 0 #f3f3f3, 0 8px 16px 0 #909090;
@@ -73,7 +76,7 @@ var u=['#cc0000','#f57900','#edd400','#73d216','#3465a4','#75507b'];
 var x=[25,75,25,75,25,75];
 var y=[37,37,75,75,113,113];
 var d=null;
-$('.c').click(function(e){
+$('.c :not(.d)').click(function(e){
   var n=parseInt(e.target.id.charAt(1));
   var i=[]
   $('#c'+n).toggleClass('h');
@@ -93,6 +96,10 @@ function redraw(){
     w.setAttribute('height','150');
     var v=w.getContext("2d");
     for(var b=0,z=c[n];b<7;b++,z>>=1){
+      if(z==null){
+        $(w).addClass('d');
+        break;
+      }
       if(z&1){
         v.beginPath();
         v.arc(x[b],y[b],10,0,2*Math.PI);
