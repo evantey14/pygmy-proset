@@ -14,8 +14,10 @@ i.on 'connection',(s)->
   if !c?
    c=new g()
    c.n()
-  s.emit 'p',{p:c.m(),c:c.c,s:c.p}
+  s.emit 'u',{p:c.m(),c:c.c,s:c.p}
+  i.emit 'u',{c:c.c,s:c.p}
  s.on 's',(m)->
+  console.log m
   if c.v m.m
    c.r m
    i.emit 'u',{c:c.c,s:c.p}
