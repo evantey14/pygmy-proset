@@ -3,7 +3,7 @@ _=r 'lodash'
 z=_.drop
 class G
  n:->
-  @d=_.range 64
+  @d=_.range 1,64
   @d=_.shuffle @d
   @c=_.take @d,7
   @d=z @d,7
