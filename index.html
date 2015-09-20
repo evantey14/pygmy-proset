@@ -54,15 +54,38 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
+var p=null,c=null,s=null,socket=io();
+socket.emit('init');
+socket.on('p',function(o){
+p=o.p;
+c=o.c;
+s=o.s;
+redraw();
+});
+socket.on('u',function(o){
+c=o.c;
+s=o.s;
+redraw();
+});
+function submit(c){
+socket.emit('s',{p:p,m:c});
+}
+
 var u=['#cc0000','#f57900','#edd400','#73d216','#3465a4','#75507b'];
 var x=[25,75,25,75,25,75];
 var y=[37,37,75,75,113,113];
-var c=Array(7);
 var d=[0,0,0,0,0,0,0];
 $('.c').click(function(e){
   var n=parseInt(e.target.id.charAt(1));
+  var i=[]
   $('#c'+n).toggleClass('h');
   d[n]=!d[n];
+  for(var a=0;a<7;a++) {
+    if(d[a]) {
+      i.push(a);
+    }
+  }
+  submit(i);
 });
 
 function redraw(){
@@ -80,14 +103,5 @@ function redraw(){
       }
     }
   }
-  console.log(c);
 }
-
-var socket=io();
-socket.emit('init');
-socket.on('p',function(o){
-  var p=o.p;
-  c=o.c;
-  redraw()
-});
 </script>
