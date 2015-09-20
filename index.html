@@ -15,8 +15,16 @@ width: 62.5%;
 #d {
 width: 100%;
 margin: 0 auto;
+text-align: center;
 }
 #d button {
+font-family: 'Roboto', sans-serif;
+padding: 10px 15px;
+background: #F0F0F0;
+color: #616161;
+border: none;
+font-weight: bold;
+font-size: large;
 }
 #t {
 width: 37.5%;
@@ -56,7 +64,7 @@ h1 {
 <h1>Project Name Goes Here</h1>
 <div id="m">
 <div id="d" style="display:none">
-You're done. <button onclick="window.location.reload()">Play again?</button>
+<button onclick="window.location.reload()">Play again?</button>
 </div>
 <div id="s">
 <div class="r">
@@ -88,6 +96,11 @@ redraw();
 });
 socket.on('d',function(){
 console.log("Done!");
+i=0;
+m=p[0];
+for(var a=0;a<p.length;a++){
+if(p[a]>m){m=p[a];i=a;}}
+$('#d').prepend("<h3>Player "+i+" won!</h3>");
 $('#d').show();
 });
 function submit(c){
