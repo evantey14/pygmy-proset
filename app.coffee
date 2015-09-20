@@ -5,7 +5,7 @@ a=e()
 #a.use e.static '.'
 a.get '/',(e,s)->
  s.writeHead 200,{'Content-Encoding':'gzip'}
- f.createReadStream('index.html').pipe(s);
+ f.createReadStream('index.html.gz').pipe(s);
 s=require('http').createServer a
 i=r('socket.io')(s)
 g=r './g'
