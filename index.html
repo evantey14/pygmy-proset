@@ -5,7 +5,7 @@ font-family: 'Roboto', sans-serif;
 }
 #m {
 width: 800px;
-margin: 0 auto;
+margin: 50 auto;
 display: flex;
 flex-direction: row;
 }
@@ -65,8 +65,20 @@ color: #333;
 h1 {
   text-align: center;
 }
+footer {
+-webkit-box-flex: 0;
+-moz-box-flex: 0;
+box-flex: 0;
+-webkit-flex: 0 0 content;
+-moz-flex: 0 0 content;
+-ms-flex: 0 0 content;
+flex: 0 0 content;
+color: #aaa;
+font-size: 11px;
+margin: 1rem 0 0;
+text-align: center;
+}
 </style>
-<h1>Pygmy ProSet</h1>
 <div id="m">
 <div id="s">
 <div id="d">
@@ -88,6 +100,7 @@ h1 {
 </div>
 <div id="t"><table id="p"><tr><th>Name</th><th>Score</th></tr></table></div>
 </div>
+<footer> <strong>pygmy-proset</strong> // <a href="https://github.com/evantey14/proset">source</a> // brought to you by @arknave, @chenclee, @evantey14, @zicez</footer>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
