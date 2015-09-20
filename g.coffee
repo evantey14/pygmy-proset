@@ -12,5 +12,7 @@ class G
  m:->
   @p.push(0)
   @p.length-1
-
+ v:(s)->
+  _.reduce(s,(t,i)->t^c[i])==0
+  
 module.exports=G
