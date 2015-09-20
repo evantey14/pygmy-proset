@@ -18,7 +18,6 @@ i.on 'connection',(s)->
   s.emit 'u',{p:c.m(),c:c.c,s:c.p}
   i.emit 'u',{c:c.c,s:c.p}
  s.on 's',(m)->
-  console.log m
   if c.v m.m
    c.r m
    i.emit 'u',{c:c.c,s:c.p}
