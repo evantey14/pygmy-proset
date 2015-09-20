@@ -95,6 +95,7 @@ function redraw(){
     w.setAttribute('width','100');
     w.setAttribute('height','150');
     var v=w.getContext("2d");
+    $(w).removeClass('d');
     for(var b=0,z=c[n];b<7;b++,z>>=1){
       if(z==null){
         $(w).addClass('d');
