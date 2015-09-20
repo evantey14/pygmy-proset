@@ -57,13 +57,8 @@
 <script>
 var p=null,c=null,s=null,socket=io();
 socket.emit('init');
-socket.on('p',function(o){
-p=o.p;
-c=o.c;
-s=o.s;
-redraw();
-});
 socket.on('u',function(o){
+if (o.p!=null || o.p!=undefined) p = o.p;
 c=o.c;
 s=o.s;
 redraw();

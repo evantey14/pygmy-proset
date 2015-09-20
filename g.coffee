@@ -13,7 +13,7 @@ class G
   @p.push 0
   @p.length-1
  v:(s)->
-  _.reduce(s,((t,i)->t^@c[i]), 0, @)==0
+  s.length > 0 and _.reduce(s,((t,i)->t^@c[i]), 0, @)==0
  r:(m)->
   @p[m.p]+=1
   for x in m.m
