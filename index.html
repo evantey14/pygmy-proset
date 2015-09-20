@@ -11,11 +11,7 @@ flex-direction: row;
 }
 #s {
 width: 62.5%;
-}
-#d {
-width: 100%;
-margin: 0 auto;
-text-align: center;
+height: 600;
 }
 #d button {
 font-family: 'Roboto', sans-serif;
@@ -34,6 +30,12 @@ border-left: 1px solid #d0d0d0;
 width: 100%;
 border-spacing: 25;
 text-align: center;
+}
+#d {
+width: 100%;
+margin: 250 auto;
+text-align: center;
+display: none;
 }
 .r {
 display: flex;
@@ -66,10 +68,10 @@ h1 {
 </style>
 <h1>Pygmy ProSet</h1>
 <div id="m">
-<div id="d" style="display:none">
+<div id="s">
+<div id="d">
 <button onclick="window.location.reload()">Play again?</button>
 </div>
-<div id="s">
 <div class="r">
 <canvas class="c" id="c0"></canvas>
 <canvas class="c" id="c1"></canvas>
@@ -105,7 +107,7 @@ for(var a=0;a<p.length;a++){
 if(p[a]>m){m=p[a];i=a;}}
 $('#d').prepend("<h3>Player "+i+" won!</h3>");
 $('#d').show();
-$('#s').hide();
+$('.r').hide();
 });
 function submit(c){
 socket.emit('s',{p:p,m:c});
