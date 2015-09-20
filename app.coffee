@@ -15,8 +15,9 @@ i.on 'connection',(s)->
    c=new g()
    c.n()
   s.emit('p',{p:c.m(),c:c.c})
+
  s.on 's',(m)->
-  if c.v(m)
-   c.r(m)
-  io.emit('u',{c:c.c})
+#if c.v(m)
+  c.r(m)
+  i.emit('u',c.c)
 s.listen 8

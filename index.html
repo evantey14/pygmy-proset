@@ -8,6 +8,9 @@ var p=o.p;
 var c=o.c;
 draw(c);
 });
+socket.on('u',function(c){
+console.log(c);
+});
 function submit(c){
 socket.emit('s', c);
 }

@@ -13,7 +13,8 @@ class G
   @p.push(0)
   @p.length-1
  v:(s)->
-  _.reduce(s,(t,i)->t^c[i])==0
+  console.log(@c)
+  _.reduce(s,((t,i)->t^@c[i]), 0, @)==0
  r:(m)->
   for x in m
    @c[x]=@d[0]
