@@ -11,12 +11,16 @@ flex-direction: row;
 }
 #s {
 width: 62.5%;
-}
-#d {
-width: 100%;
-margin: 0 auto;
+height: 600;
 }
 #d button {
+font-family: 'Roboto', sans-serif;
+padding: 10px 15px;
+background: #F0F0F0;
+color: #616161;
+border: none;
+font-weight: bold;
+font-size: large;
 }
 #t {
 width: 37.5%;
@@ -26,6 +30,12 @@ border-left: 1px solid #d0d0d0;
 width: 100%;
 border-spacing: 25;
 text-align: center;
+}
+#d {
+width: 100%;
+margin: 250 auto;
+text-align: center;
+display: none;
 }
 .r {
 display: flex;
@@ -46,15 +56,22 @@ display: none;
 -moz-box-shadow: inset 0 8px 0 0 #F3F3F3, 0 8px 16px 0 #909090;
 -webkit-box-shadow: inset 0 8px 0 0 #f3f3f3, 0 8px 16px 0 #909090;
 }
+.x {
+color: #ccc;
+}
 .e {
-color: #75507b;
+color: #333;
+}
+h1 {
+  text-align: center;
 }
 </style>
+<h1>Pygmy ProSet</h1>
 <div id="m">
-<div id="d" style="display:none">
-You're done. <button onclick="window.location.reload()">Play again?</button>
-</div>
 <div id="s">
+<div id="d">
+<button onclick="window.location.reload()">Play again?</button>
+</div>
 <div class="r">
 <canvas class="c" id="c0"></canvas>
 <canvas class="c" id="c1"></canvas>
@@ -84,7 +101,13 @@ redraw();
 });
 socket.on('d',function(){
 console.log("Done!");
+i=0;
+m=p[0];
+for(var a=0;a<p.length;a++){
+if(p[a]>m){m=p[a];i=a;}}
+$('#d').prepend("<h3>Player "+i+" won!</h3>");
 $('#d').show();
+$('.r').hide();
 });
 function submit(c){
 socket.emit('s',{p:p,m:c});
@@ -109,8 +132,8 @@ function redraw(){
 $('.x').remove();
 var l=$('#p');
 for(var n=0;n<s.length;n++){
-var j=n==p?' e':'';
-l.append("<tr class='x"+j+"'><td>Player "+n+"</td><td>"+s[n]+"</td></tr>");
+var j=n==p?'e ':'';
+l.append("<tr class='"+j+"x'><td>Player "+n+"</td><td>"+s[n]+"</td></tr>");
 }
 for(var n=0;n<7;n++){
 var w=$('#c'+n).get(0);
