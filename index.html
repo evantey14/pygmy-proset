@@ -1,9 +1,6 @@
 Hello World!
 <script src="/socket.io/socket.io.js"></script>
 <script>
-function draw(cards){
-console.log(cards);
-}
 var socket=io();
 socket.emit('init');
 socket.on('p',function(o){
@@ -11,4 +8,10 @@ var p=o.p;
 var c=o.c;
 draw(c);
 });
+function submit(c){
+socket.emit('s', c);
+}
+function draw(c){
+console.log(c);
+}
 </script>
