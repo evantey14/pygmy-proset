@@ -24,4 +24,4 @@ i.on 'connection',(s)->
    if c.e()
     c=null
     i.emit 'd'
-s.listen 8
+s.listen 80
