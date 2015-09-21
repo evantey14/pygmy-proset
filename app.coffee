@@ -10,17 +10,24 @@ s=require('http').createServer a
 i=r('socket.io')(s)
 g=r './g'
 c=null
+u=(i,c)->
+ i.emit 'u',{c:c.c,s:c.p}
 i.on 'connection',(s)->
+ n=null
  s.on 'init',->
   if !c?
    c=new g()
    c.n()
-  s.emit 'u',{p:c.m(),c:c.c,s:c.p}
-  i.emit 'u',{c:c.c,s:c.p}
+  n=c.m()
+  s.emit 'u',{p:n,c:c.c,s:c.p}
+  u(i,c)
+ s.on 'disconnect',->
+  c.o n
+  u(i,c)
  s.on 's',(m)->
   if c.v m.m
    c.r m
-   i.emit 'u',{c:c.c,s:c.p}
+   u(i,c)
    if c.e()
     c=null
     i.emit 'd'

@@ -14,6 +14,8 @@ class G
  m:->
   @p.push 0
   @p.length-1
+ o:(i)->
+  @p[i]=-1
  v:(s)->
   s.length > 0 and _.reduce(s,((t,i)->t^@c[i]), 0, @)==0
  r:(m)->
