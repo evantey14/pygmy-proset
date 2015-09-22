@@ -14,10 +14,12 @@ class G
  m:->
   @p.push 0
   @p.length-1
+ o:(i)->
+  @p[i]=-1
  v:(s)->
   s.length > 0 and _.reduce(s,((t,i)->t^@c[i]), 0, @)==0
  r:(m)->
-  @p[m.p]+=1
+  @p[m.p]+=m.m.length
   for x in m.m
    @c[x]=@d[0]
    @d=z @d,1

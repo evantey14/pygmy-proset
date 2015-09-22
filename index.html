@@ -61,8 +61,8 @@ margin: 25;
 display: none;
 }
 .h {
--moz-box-shadow: inset 0 8px 0 0 #F3F3F3, 0 8px 16px 0 #909090;
--webkit-box-shadow: inset 0 8px 0 0 #f3f3f3, 0 8px 16px 0 #909090;
+-moz-box-shadow: 0 8px 16px 0 #909090;
+-webkit-box-shadow: 0 8px 16px 0 #909090;
 }
 .x {
 color: #ccc;
@@ -219,9 +219,10 @@ function redraw(){
 $('.x').remove();
 var l=$('#p');
 for(var n=0;n<s.length;n++){
+if(s[n]!=-1){
 var j=n==p?'e ':'';
 l.append("<tr class='"+j+"x'><td>Player "+n+"</td><td>"+s[n]+"</td></tr>");
-}
+}}
 for(var n=0;n<7;n++){
 var w=$('#c'+n).get(0);
 w.setAttribute('width','100');

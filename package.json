@@ -1,12 +1,11 @@
 {
   "name": "proset",
   "mod-project": "proset",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "proset game",
-  "main": "app.js",
+  "main": "app.coffee",
   "scripts": {
-    "start": "node_modules/.bin/coffee app.coffee",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gzip -kf index.html && node_modules/.bin/coffee app.coffee"
   },
   "repository": {
     "type": "git",
@@ -17,7 +16,7 @@
     "game",
     "card"
   ],
-  "author": "",
+  "author": "arknave,chenclee,evantey14,zicez",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/evantey14/proset/issues"
