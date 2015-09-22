@@ -19,7 +19,7 @@ class G
  v:(s)->
   s.length > 0 and _.reduce(s,((t,i)->t^@c[i]), 0, @)==0
  r:(m)->
-  @p[m.p]+=1
+  @p[m.p]+=m.m.length
   for x in m.m
    @c[x]=@d[0]
    @d=z @d,1
