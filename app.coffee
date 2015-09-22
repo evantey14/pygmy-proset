@@ -31,4 +31,5 @@ i.on 'connection',(s)->
    if c.e()
     c=null
     i.emit 'd'
-s.listen 80
+p=process.env.PORT||8080
+s.listen p
