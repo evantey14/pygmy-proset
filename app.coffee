@@ -1,11 +1,12 @@
 r=require
 e=r 'express'
 f=r 'fs'
+p=r 'path'
 a=e()
-#a.use e.static '.'
-a.get '/',(e,s)->
- s.writeHead 200,{'Content-Encoding':'gzip'}
- f.createReadStream('index.html.gz').pipe(s);
+a.use e.static '.'
+#a.get '/',(e,s)->
+# s.writeHead 200,{'Content-Encoding':'gzip'}
+# f.createReadStream(p.join(__dirname, 'index.html.gz')).pipe(s);
 s=require('http').createServer a
 i=r('socket.io')(s)
 g=r './g'
@@ -24,4 +25,6 @@ i.on 'connection',(s)->
    if c.e()
     c=null
     i.emit 'd'
-s.listen 80
+
+port = process.env.PORT || 8080
+s.listen port

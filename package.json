@@ -1,10 +1,11 @@
 {
   "name": "proset",
+  "mod-project": "proset",
   "version": "0.0.1",
   "description": "proset game",
   "main": "app.js",
   "scripts": {
-    "start": "sudo node_modules/.bin/coffee app.coffee",
+    "start": "node_modules/.bin/coffee app.coffee",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
