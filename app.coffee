@@ -32,11 +32,5 @@ i.on 'connection',(s)->
    if c.e()
     c=null
     i.emit 'd'
-<<<<<<< HEAD
-
 port = process.env.PORT || 8080
 s.listen port
-=======
-p=process.env.PORT||8080
-s.listen p
->>>>>>> 0c77d3c63f9d25c37382ae37a23c7bace6d78608
