@@ -23,8 +23,9 @@ i.on 'connection',(s)->
   s.emit 'u',{p:n,c:c.c,s:c.p}
   u(i,c)
  s.on 'disconnect',->
-  c.o n
-  u(i,c)
+  if c
+   c.o n
+   u(i,c)
  s.on 's',(m)->
   if c.v m.m
    c.r m
