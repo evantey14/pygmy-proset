@@ -188,11 +188,13 @@ console.log(a);
 a.forEach(function(e){console.log(e);anim(e);});
 });
 socket.on('d',function(){
-i=0;
-m=p[0];
-for(var a=0;a<p.length;a++){
-if(p[a]>m){m=p[a];i=a;}}
-$('#d').prepend("<h3>Player "+i+" won!</h3>");
+m=[[0,s[0]]];
+for(var a=1;a<s.length;a++){
+if(s[a]>m[0][1]){m=[[a,s[a]]];}
+else if(s[a]===m[0][1]){m.push([a,s[a]]);}}
+m.forEach(function(e){
+$('#d').prepend("<h3>Player "+e[0]+" won!</h3>");
+});
 $('#d').show();
 $('.r').hide();
 });
